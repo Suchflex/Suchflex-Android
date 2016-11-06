@@ -1,0 +1,24 @@
+{
+  "name": "Distribit",
+  "homepage": "https://github.com/jdheeter/Distribit-Android",
+  "authors": [
+    "Cristian Tardivo <tartexs@gmail.com>"
+  ],
+  "description": "distributed computing",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "ionic-material-design-lite": "^0.5.5"
+  }
+}

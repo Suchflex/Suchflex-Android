@@ -1,0 +1,68 @@
+<ion-view view-title="Main">
+  <ion-content>
+    <div style="background-color: yellow" ng-init="getProjects(); readData();">
+      <div ng-show="mainView">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="padding:10px;" ui-sref="getProjects()">Refresh</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="padding:10px;" ui-sref="app.attach">Add Projects</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="padding:10px;" ui-sref="app.tasks">View tasks</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="padding:10px;" ui-sref="app.settings">Settings</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="padding:10px;" ng-click="setRunMode()">Run Mode</button>
+        <select ng-model="currentMode">
+              <option value="2">Auto</option>
+              <option value="3">Never</option>
+        </select>
+        <div ng-show="account_manager.present">
+          <h3>Account Manager</h3>
+          {{account_manager.acct_mgr_name}}
+          <button ng-click="accountManagerOp('sync')">Synchronize</button>
+          <button ng-click="accountManagerOp('remove')">Remove</button>
+        </div>
+        <h3>Current Projects</h3>
+        <div ng-repeat="project in projects track by $index">
+            {{project.project_name}}
+            <br>
+            {{project.master_url}}
+            <br>
+            {{project.user_name}}
+            <br>
+            {{project.current_status}}
+            <br>
+            <button ng-click="operation(project)">Operation</button>
+            <select ng-model="project.do_project_op">
+              <option value="1">Update</option>
+              <option value="2">Suspend</option>
+              <option value="3">Resume</option>
+              <option value="4">No more work</option>
+              <option value="5">Allow more work</option>
+              <option value="6">Dettach</option>
+            </select>
+            <button ng-click="details(project)">Details</button>
+        </div>
+        <hr>
+        <h4>Client status:</h4>
+        {{status}}
+        <hr>
+        <h4>Notices:</h4>
+        <div ng-repeat="notice in notices track by $index">
+            {{notice.title}}  {{notice.project_name}} : {{notice.description}}
+        </div>
+      </div>
+      <div ng-show="projectDetails">
+        <p>Name: {{selected_project.name}}</p>
+        <p>Url: {{selected_project.url}}</p>
+        <p>General Area: {{selected_project.generalArea}}</p>
+        <p>Specific Area: {{selected_project.specificArea}}</p>
+        <p>Description: {{selected_project.description}}</p>
+        <p>Home: {{selected_project.home}}</p>
+        <p>Summary: {{selected_project.summary}}</p>
+        <p>Platforms:
+          <select ng-model="selected_project.platforms[0]">
+            <option value="{{platform}}" ng-repeat="platform in selected_project.platforms track by $index">{{platform}}</option>
+          </select>
+        </p>
+        <img ng-src="{{selected_project.imageUrl}}" alt="{{selected_project.imageUrl}}"/>
+        <button ng-click="projectDetails = false; mainView = true;">Close</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

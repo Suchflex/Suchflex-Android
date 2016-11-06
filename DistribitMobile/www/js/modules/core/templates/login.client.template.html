@@ -1,0 +1,35 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <!-- <h1 class="title">Login</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div> -->
+  </ion-header-bar>
+  <ion-content>
+  <img src="img/logo.png" class="col-offset-20" style="width:60%; padding-top:15%">
+    <form ng-submit="doLogin()" style="padding:10%">
+      <div class="list">
+      <div class="col-offset-25">
+        <h3>Please sign in</h3>
+      </div>
+        
+        <label class="item">
+          <button class="button button-block button-positive" >Login with Facebook</button>
+          <button class="button button-block button-assertive">Login with Google</button>
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-calm" type="submit">Login</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

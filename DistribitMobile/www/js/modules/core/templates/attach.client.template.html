@@ -1,0 +1,42 @@
+<ion-view view-title="Attach">
+  <ion-content>
+    <div style="background-color: yellow" ng-init="getAttachableProjects()">
+      <div ng-show="attach_project">
+        <button ng-click="getAttachableProjects()">Refresh</button>
+        <button ng-click="attachByUrl()">Add by URL</button>
+        <button ng-click="attachAccountManager()">Attach AccountMgr</button>
+        <button ng-click="goBack()">Go back</button>
+          <div ng-if="attachable_projects">
+            <h3>Attachable projects</h3>
+            <div ng-repeat="project in attachableProjects track by $index">
+                <p>{{project.name}}</p>
+                <p>{{project.url}}</p>
+                <button ng-click="attach(project)">Join</button>
+            </div>
+          </div>
+        </div>
+        <div ng-show="input_url">
+          <p>Url: <input type="text" name="input" ng-model="selected_project.url" required ng-trim="true" data-ng-init="selected_project.url = 'http://'"></p>
+          <button ng-click="acceptUrl()">Accept</button>
+          <button ng-click="cancel()">Cancel</button>
+        </div>
+        <div ng-show="input_credentials">
+          <p>Email: <input type="text" name="input" ng-model="credentials.email" required ng-trim="true"></p>
+          <p>User: <input type="text" name="input" ng-model="credentials.user" required ng-trim="true"></p>
+          <p>Passwerd: <input type="text" name="input" ng-model="credentials.pwd" required ng-trim="true"></p>
+          <button ng-click="login()">Login</button>
+          <button ng-click="register()">Register</button>
+          <button ng-click="cancel()">Cancel</button>
+        </div>
+        <div ng-show="input_account_manager">
+          <p>Url: <input type="text" name="input" ng-model="manager.url" required ng-trim="true" data-ng-init="manager.url = 'http://'"></p>
+          <p>User: <input type="text" name="input" ng-model="manager.user" required ng-trim="true"></p>
+          <p>Password: <input type="text" name="input" ng-model="manager.pwd" required ng-trim="true"></p>
+          <button ng-click="attachMgr()">Attach</button>
+          <button ng-click="cancel()">Cancel</button>
+        </div>
+        <hr>
+        <p>{{current_status}}</p>
+    </div>
+  </ion-content>
+</ion-view>

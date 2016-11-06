@@ -1,0 +1,28 @@
+<ion-view view-title="Tasks">
+  <ion-content>
+    <div style="background-color: yellow" ng-init="getTasks()">
+      <button ng-click="getTasks()">Refresh</button>
+      <button ng-click="goBack()">Go back</button>
+      <h3>System tasks</h3>
+      <h4 ng-if="tasks.length == 0">No tasks!</h4>
+      <div ng-repeat="task in tasks track by $index">
+        Name: {{task.name}}
+        <br>
+        Prj Name: {{task.project.project_name}}
+        <br>
+        Prj Url: {{task.project_url}}
+        <br>
+        Fraction done: {{task.fraction_done}}
+        <br>
+        Status: {{task.current_status}}
+        <br>
+        <button ng-click="operation(task)">Operation</button>
+            <select ng-model="task.do_result_op">
+              <option value="10">Suspend</option>
+              <option value="11">Resume</option>
+              <option value="12">Abort</option>
+            </select>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

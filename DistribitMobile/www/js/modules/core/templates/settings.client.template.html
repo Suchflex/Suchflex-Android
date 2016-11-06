@@ -1,0 +1,97 @@
+<ion-view view-title="Settings">
+    <ion-content>
+        <button class="button" ng-click="profile1()">
+            Profile 1
+        </button>
+        <button class="button" ng-click="profile2()">
+            Profile 2
+        </button>
+        <button class="button" ng-click="profile3()">
+            Profile 3
+        </button>
+        <div ng-init="getSettings()">
+                
+            
+            
+            <ion-list>
+                <ion-item>
+                    <ion-toggle
+                        class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        ng-model="settings.run_on_batteries">
+                        Run on batteries
+                    </ion-toggle>
+                </ion-item>
+                <ion-item>
+                    <ion-toggle 
+                        class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        ng-model="settings.network_wifi_only">
+                        Wifi only
+                    </ion-toggle>
+                </ion-item>
+                <ion-item>
+                    <ion-toggle class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        ng-model="settings.run_if_user_active">
+                        Run if user is active
+                    </ion-toggle>
+                </ion-item>
+                <ion-item>
+                    <ion-toggle class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        ng-model="settings.run_if_user_active">
+                        Run if user is active
+                    </ion-toggle>
+                    </ion-item>
+
+            </ion-list>
+            <p>Cpu Scheduling minutes: {{settings.cpu_scheduling_period_minutes}}</p>
+            <p>Cpu Usage limit: <input type="number" min="0" max="100" step="10" ng-model="settings.cpu_usage_limit" /> [0..100]</p>
+            <p>Suspend when cpu usage:  <input type="number" min="0" max="100" step="10" ng-model="settings.suspend_cpu_usage" /> [0..100]</p>
+            <p>Bettery max temperature: {{settings.battery_max_temperature}}</p>
+            <p>Bettery min charge: <input type="number" min="0" max="100" step="10" ng-model="settings.battery_charge_min_pct" /> [0..100]</p>
+
+            <p ng-click="misc.auto_start = !misc.auto_start">Autostart: {{misc.auto_start}}</p>
+            <p ng-click="misc.suspend_when_screen_on = !misc.suspend_when_screen_on">Suspend when screen is on: {{misc.suspend_when_screen_on}}</p>
+            <p ng-click="misc.power_source_ac = !misc.power_source_ac">Enable powersource AC: {{misc.power_source_ac}}</p>
+            <p ng-click="misc.power_source_usb = !misc.power_source_usb">Enable powersource USB: {{misc.power_source_usb}}</p>
+            <p ng-click="misc.power_source_wireless = !misc.power_source_wireless">Enable powersource Wireless: {{misc.power_source_wireless}}</p>
+        </div>
+       
+        <!--
+         "daily_xfer_limit_mb": 0,
+
+         "work_buf_min_days": 0.1,
+
+         "disk_interval": 60,
+
+         "disk_max_used_gb": 0,
+
+         "disk_max_used_pct": 90,
+
+          "disk_min_free_gb": 0.1,
+
+          "work_buf_additional_days": 0.5,
+
+          "idle_time_to_run": 3,
+
+          "max_bytes_sec_down": 0,
+
+          "max_bytes_sec_up": 0,
+
+          "max_ncpus_pct": 50,
+
+          "ram_max_used_idle_frac": 50,
+
+          "ram_max_used_busy_frac": 50,
+
+          "override_file_present": false,
+
+          "run_gpu_if_user_active": false,
+
+          "leave_apps_in_memory": false,
+
+          "dont_verify_images": false,
+
+          "daily_xfer_period_days": 0
+
+          -->
+    </ion-content>
+</ion-view>
